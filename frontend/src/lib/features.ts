@@ -1,0 +1,6 @@
+export const FEATURE_FLAGS = {
+  ENABLE_APPROVALS: false,
+  ENABLE_PURCHASE_ORDERS: false,
+  ENABLE_SUPPLIERS: false,
+  ENABLE_MY_TASKS: false,
+};

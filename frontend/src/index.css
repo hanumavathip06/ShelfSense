@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-dark: #0B3328;
+    --bg-light: #F5F5F0;
+    --primary: #0F7B5F;
+    --text-dark: #12261F;
+    --text-muted: #6B7B74;
+    --border: #E3E3DC;
+  }
+  
+  body {
+    @apply bg-background text-primary font-sans;
+  }
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), 
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}

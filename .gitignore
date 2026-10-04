@@ -1,0 +1,31 @@
+# General
+node_modules/
+*.env
+.DS_Store
+*.log
+*.sqlite3
+*.env.local
+*.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env_python/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Node / Frontend
+dist/
+build/
+coverage/
+.next/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo

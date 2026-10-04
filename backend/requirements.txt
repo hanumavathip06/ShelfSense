@@ -1,0 +1,26 @@
+Flask==3.0.3
+Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.0.7
+Flask-CORS==4.0.1
+Flask-JWT-Extended==4.6.0
+python-dotenv==1.0.1
+psycopg2-binary==2.9.9
+marshmallow==3.21.3
+werkzeug==3.0.3
+gunicorn==21.2.0
+# ML/AI Dependencies
+scikit-learn==1.5.1
+statsmodels==0.14.2
+xgboost==2.1.0
+prophet==1.1.5
+tensorflow==2.16.1
+pandas==2.2.2
+numpy==1.26.4
+joblib==1.4.2
+scipy==1.14.0
+passlib[argon2]==1.7.4
+Flask-Limiter==3.8.0
+openpyxl==3.1.2
+filetype==1.2.0
+apscheduler==3.10.4
+reportlab==4.0.4
