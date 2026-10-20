@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getSuppliers, createSupplier, updateSupplier } from '../lib/api';
+import { getSuppliers, updateSupplier } from '../lib/api';
 import { toast } from 'react-hot-toast';
 import { DataTable } from '../components/ui/DataTable';
 import { useAuth } from '../contexts/AuthContext';

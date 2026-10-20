@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { useQuery } from '@tanstack/react-query';
 import api from '../lib/axios'; // Direct call since we don't have it in lib/api.ts
-import { Skeleton } from '../components/ui/Skeleton';
 import { DataTable } from '../components/ui/DataTable';
-import { Search } from 'lucide-react';
 
 export function PurchaseOrders() {
   const [statusFilter, setStatusFilter] = useState('all');

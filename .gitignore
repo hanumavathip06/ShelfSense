@@ -17,12 +17,15 @@ env/
 .env_python/
 pip-log.txt
 pip-delete-this-directory.txt
+.pytest_cache/
 
 # Node / Frontend
 dist/
 build/
 coverage/
 .next/
+test-results/
+*.tsbuildinfo
 
 # IDE / OS
 .vscode/

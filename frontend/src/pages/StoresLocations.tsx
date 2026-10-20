@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import api from '../lib/axios';
-import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
-import { Skeleton } from '../components/ui/Skeleton';
+import { Card, CardContent } from '../components/ui/Card';
 import { DataTable } from '../components/ui/DataTable';
 import { Modal } from '../components/ui/Modal';
 import { Plus } from 'lucide-react';

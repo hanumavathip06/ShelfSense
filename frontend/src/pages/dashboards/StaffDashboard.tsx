@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Package, PlusCircle, AlertCircle, Scan, ClipboardList, Activity } from 'lucide-react';

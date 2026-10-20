@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 import { getTeamActivity, assignTask, getUsers } from '../lib/api';
 import { toast } from 'react-hot-toast';
 import { Skeleton } from '../components/ui/Skeleton';
 
 export function Team() {
-  const queryClient = useQueryClient();
   const [selectedUser, setSelectedUser] = useState('');
   const [taskType, setTaskType] = useState('cycle_count');
   const [taskDesc, setTaskDesc] = useState('');

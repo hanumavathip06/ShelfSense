@@ -8,7 +8,6 @@ export function ImportData() {
   const [currentStep, setCurrentStep] = useState<Step>('upload');
   const [file, setFile] = useState<File | null>(null);
   const [entityType, setEntityType] = useState('products');
-  const [jobId, setJobId] = useState<number | null>(null);
   const [progress, setProgress] = useState(0);
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -76,7 +75,6 @@ export function ImportData() {
     setFile(null);
     setCurrentStep('upload');
     setProgress(0);
-    setJobId(null);
   };
 
   return (

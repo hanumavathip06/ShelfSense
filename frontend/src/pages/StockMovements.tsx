@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { recordStockMovement, getProducts, getCategories } from '../lib/api';
-import { Package } from 'lucide-react';
+import { recordStockMovement, getProducts } from '../lib/api';
 import { toast } from 'react-hot-toast';
 
 export function StockMovements() {
