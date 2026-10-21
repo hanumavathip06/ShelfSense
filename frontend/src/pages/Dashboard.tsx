@@ -8,7 +8,8 @@ export function Dashboard() {
   
   if (!user) return null;
   
-  if (user.role === 'admin') return <AdminDashboard />;
-  if (user.role === 'manager') return <ManagerDashboard />;
+  const role = user.role?.toLowerCase();
+  if (role === 'admin') return <AdminDashboard />;
+  if (role === 'manager') return <ManagerDashboard />;
   return <StaffDashboard />;
 }

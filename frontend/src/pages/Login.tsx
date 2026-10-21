@@ -23,7 +23,8 @@ export function Login() {
     e.preventDefault();
     setError('');
 
-    const result = loginSchema.safeParse({ email, password });
+    const cleanEmail = email.trim().toLowerCase();
+    const result = loginSchema.safeParse({ email: cleanEmail, password });
     if (!result.success) {
       setError(result.error.issues[0].message);
       return;
@@ -32,12 +33,15 @@ export function Login() {
     setLoading(true);
     
     try {
-      const response = await api.post('/auth/login', { email, password });
+      const response = await api.post('/auth/login', { email: cleanEmail, password });
       const { access_token, user } = response.data;
       login(access_token, user);
-      navigate('/');
+      navigate('/', { replace: true });
     } catch (err: any) {
-      setError(err.response?.data?.error?.message || 'Login failed. Please check your credentials.');
+      const msg = typeof err.response?.data?.error === 'string'
+        ? err.response.data.error
+        : (err.response?.data?.error?.message || err.response?.data?.message || 'Login failed. Please check your credentials.');
+      setError(msg);
     } finally {
       setLoading(false);
     }

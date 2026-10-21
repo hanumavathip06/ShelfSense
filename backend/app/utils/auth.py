@@ -38,7 +38,9 @@ ROLE_PERMISSIONS = {
         Permission.ALERTS_VIEW,
         Permission.REPORTS_VIEW,
         Permission.FORECAST_VIEW,
-        Permission.FORECAST_EDIT
+        Permission.FORECAST_EDIT,
+        Permission.SETTINGS_EDIT,
+        Permission.IMPORTS_EXECUTE
     },
     'staff': {
         Permission.DASHBOARD_VIEW,
@@ -52,8 +54,13 @@ def has_permission(role, permission):
     permissions = ROLE_PERMISSIONS.get(role, set())
     return permission in permissions
 
+import inspect
+
 def requires_permission(permission: Permission):
     def wrapper(fn):
+        sig = inspect.signature(fn)
+        wants_current_user = 'current_user' in sig.parameters
+
         @wraps(fn)
         def decorator(*args, **kwargs):
             verify_jwt_in_request()
@@ -62,14 +69,19 @@ def requires_permission(permission: Permission):
             if not has_permission(user_role, permission):
                 return api_error(f"Forbidden: requires {permission.name}", 403)
                 
+            from app.models import User
+            user_id = get_jwt_identity()
+            user = User.query.get(int(user_id)) if user_id else None
+            if not user or not user.is_active:
+                return api_error("User not found or account deactivated.", 401)
+                
             # Check session revocation if session_version is in token
             token_session_version = claims.get('session_version')
-            if token_session_version is not None:
-                from app.models import User
-                user_id = get_jwt_identity()
-                user = User.query.get(user_id)
-                if not user or user.session_version != token_session_version or not user.is_active:
-                    return api_error("Session expired, revoked, or account deactivated.", 401)
+            if token_session_version is not None and user.session_version != token_session_version:
+                return api_error("Session expired, revoked, or account deactivated.", 401)
+            
+            if wants_current_user:
+                kwargs['current_user'] = user
                     
             return fn(*args, **kwargs)
         return decorator
