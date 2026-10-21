@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getAuditLogs } from '../lib/api';
 import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';

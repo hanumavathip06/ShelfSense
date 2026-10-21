@@ -29,7 +29,7 @@ export function Users() {
   const revokeMutation = useMutation({
     mutationFn: (id: number) => revokeUserSessions(id),
     onSuccess: () => toast.success('Sessions revoked'),
-    onError: (err: any) => toast.error('Failed to revoke sessions'),
+    onError: () => toast.error('Failed to revoke sessions'),
   });
 
   return (
