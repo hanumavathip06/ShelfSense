@@ -5,14 +5,18 @@ from app import create_app
 from flask_jwt_extended import create_access_token
 from werkzeug.security import generate_password_hash
 
+class TestConfig:
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = "test-secret"
+    JWT_SECRET_KEY = "test-secret-key"
+    CORS_ORIGIN = "*"
+    DIRECT_URL = None
+
 @pytest.fixture(scope="module")
 def app():
-    app = create_app()
-    app.config.update({
-        "TESTING": True,
-        "SQLALCHEMY_DATABASE_URI": "sqlite:///:memory:",
-        "JWT_SECRET_KEY": "test-secret-key"
-    })
+    app = create_app(config_class=TestConfig)
     
     with app.app_context():
         db.create_all()

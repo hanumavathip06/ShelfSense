@@ -13,6 +13,14 @@ def create_app(config_class=Config):
     # We pass it through the engine options temporarily during migrations
     migrate.init_app(app, db)
     
+    # Ensure database schema exists
+    with app.app_context():
+        try:
+            from . import models
+            db.create_all()
+        except Exception as e:
+            app.logger.warning(f"Database schema auto-creation notice: {e}")
+    
     cors.init_app(app, resources={r"/api/*": {"origins": app.config['CORS_ORIGIN']}})
     jwt.init_app(app)
     
