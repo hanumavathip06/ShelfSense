@@ -103,7 +103,7 @@ export function Sidebar() {
         {aiNav.length > 0 && (
           <div className="pt-4 mt-4 border-t border-border">
             <p className="px-3 mb-2 text-xs font-semibold text-secondary uppercase tracking-wider">
-              AI & Analytics
+              AI & Analysis
             </p>
             {renderLinks(aiNav)}
           </div>
